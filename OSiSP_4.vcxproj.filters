@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\src">
+      <UniqueIdentifier>{7ad32407-1963-438d-b5b5-d098ed9e78da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\src\ThreadPool">
+      <UniqueIdentifier>{ebef6d1b-63ca-4965-aef8-306f5e388fab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\src">
+      <UniqueIdentifier>{68542624-360f-45f1-a0e2-d31d22315b10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\src\ThreadPool">
+      <UniqueIdentifier>{2ad56606-1806-48a6-b9ea-e39e396b399a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\src\ThreadInfo">
+      <UniqueIdentifier>{7e74d224-f76b-4918-909e-988fa2003237}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\src\ThreadInfo">
+      <UniqueIdentifier>{5ff1b17e-1766-4be1-80a8-5fca493743c4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\Main.cpp">
+      <Filter>Исходные файлы\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ThreadPool\ThreadPool.cpp">
+      <Filter>Исходные файлы\src\ThreadPool</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ThreadPool\ThreadPoolImplementation.cpp">
+      <Filter>Исходные файлы\src\ThreadPool</Filter>
+    </ClCompile>
+    <ClCompile Include="src\ThreadInfo\ThreadInfo.cpp">
+      <Filter>Исходные файлы\src\ThreadInfo</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\ThreadPool\ThreadPool.h">
+      <Filter>Файлы заголовков\src\ThreadPool</Filter>
+    </ClInclude>
+    <ClInclude Include="src\Config.h">
+      <Filter>Файлы заголовков\src</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ThreadInfo\ThreadInfo.h">
+      <Filter>Файлы заголовков\src\ThreadInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ThreadPool\ThreadPoolImplementation.h">
+      <Filter>Файлы заголовков\src\ThreadPool</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
