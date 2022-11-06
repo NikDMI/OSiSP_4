@@ -25,7 +25,10 @@ namespace LAB {
 		}
 	}
 
-	
+
+
+	///CONFIGS 
+
 	class ConfigThreadPool {
 	public:
 		ConfigThreadPool() {
@@ -37,5 +40,6 @@ namespace LAB {
 		ThreadPool m_mainThreadPool {1};
 	};
 
+	//This object is used to initialize thread pool
 	ConfigThreadPool configThreadPool;
 }

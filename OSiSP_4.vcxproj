@@ -23,12 +23,14 @@
     <ClCompile Include="src\ThreadInfo\ThreadInfo.cpp" />
     <ClCompile Include="src\ThreadPool\ThreadPool.cpp" />
     <ClCompile Include="src\ThreadPool\ThreadPoolImplementation.cpp" />
+    <ClCompile Include="src\ThreadPool\ThreadsMap.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\Config.h" />
     <ClInclude Include="src\ThreadInfo\ThreadInfo.h" />
     <ClInclude Include="src\ThreadPool\ThreadPool.h" />
     <ClInclude Include="src\ThreadPool\ThreadPoolImplementation.h" />
+    <ClInclude Include="src\ThreadPool\ThreadsMap.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
