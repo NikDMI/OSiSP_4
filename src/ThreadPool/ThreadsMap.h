@@ -14,6 +14,8 @@ namespace LAB {
 
 	private:
 		using state_t = int64_t;
-		state_t m_threadsInfo[(ThreadPoolImplementation::MAX_THREAD_NUMBER + (sizeof(state_t) * CHAR_BIT) - 1) / (sizeof(state_t) * CHAR_BIT)];
+		constexpr static int MAX_THREAD_STATE_IN_VAR = sizeof(state_t) * CHAR_BIT;
+		//From right to left   <- 000000011 000100011 <-      1 is suspended thread
+		state_t m_threadsSuspendedInfo[(ThreadPoolImplementation::MAX_THREAD_NUMBER + (MAX_THREAD_STATE_IN_VAR) - 1) / MAX_THREAD_STATE_IN_VAR];
 	};
 }
