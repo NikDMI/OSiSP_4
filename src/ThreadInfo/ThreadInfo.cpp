@@ -1,11 +1,12 @@
 #include "ThreadInfo.h"
-
+#include "../ThreadPool/ThreadsMap.h"
 
 namespace LAB {
 
 	DWORD WINAPI ThreadProc(LPVOID param);
 
-	ThreadInfo::ThreadInfo() {
+	ThreadInfo::ThreadInfo(ThreadsMap* threadMap, int indexInMap) : m_sharedThreadsMap{ threadMap }, m_indexInThreadsMap{ indexInMap } {
+		if (threadMap == nullptr) throw ExceptionBadArgs();
 		//Auto reset event
 		m_threadEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
 		m_isThreadBusy = 0;
@@ -15,6 +16,7 @@ namespace LAB {
 
 	bool ThreadInfo::TrySetWorkItem(ThreadPool::WorkCallback callbackFunction, void* params) {
 		if (!InterlockedCompareExchange(&m_isThreadBusy, 1, 0)) {
+			m_sharedThreadsMap->SetThreadState(m_indexInThreadsMap, false);
 			m_currentThreadEvent = ThreadInfo::ThreadEvent::GET_TASK;
 			m_itemData.callback = callbackFunction;
 			m_itemData.params = params;
@@ -40,6 +42,7 @@ namespace LAB {
 		ThreadInfo* threadInfo = (ThreadInfo*)param;
 		HANDLE waitEvent = threadInfo->m_threadEvent;
 		while (true) {
+			threadInfo->m_sharedThreadsMap->SetThreadState(threadInfo->m_indexInThreadsMap, true);
 			WaitForSingleObject(waitEvent, INFINITE);
 			ThreadPool::WorkCallback callbackFunction;
 			//Choose thread activity

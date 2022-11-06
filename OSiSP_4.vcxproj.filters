@@ -48,6 +48,9 @@
     <ClCompile Include="src\ThreadPool\ThreadsMap.cpp">
       <Filter>Исходные файлы\src\ThreadPool</Filter>
     </ClCompile>
+    <ClCompile Include="src\ThreadPool\TaskQueue.cpp">
+      <Filter>Исходные файлы\src\ThreadPool</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ThreadPool\ThreadPool.h">
@@ -63,6 +66,9 @@
       <Filter>Файлы заголовков\src\ThreadPool</Filter>
     </ClInclude>
     <ClInclude Include="src\ThreadPool\ThreadsMap.h">
+      <Filter>Файлы заголовков\src\ThreadPool</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ThreadPool\TaskQueue.h">
       <Filter>Файлы заголовков\src\ThreadPool</Filter>
     </ClInclude>
   </ItemGroup>

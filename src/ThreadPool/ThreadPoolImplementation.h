@@ -4,6 +4,9 @@
 #include <vector>
 
 namespace LAB {
+
+	class ThreadsMap;
+
 	/***
 	* This class has only one object in the programm
 	* The main responsibility of this class - is to navigate tasks to thread (thread manager)
@@ -26,8 +29,8 @@ namespace LAB {
 
 		//Section of threads information
 		int m_maxThreadNumber;
-		std::vector<ThreadInfo*> m_poolThreads;		//Threads of OS, that ThreadPool was created
-		
+		std::vector<ThreadInfo*> m_poolThreads { MAX_THREAD_NUMBER };		//Threads of OS, that ThreadPool was created
+		ThreadsMap* m_threadsMap;
 
 		friend class ThreadPool;
 	};

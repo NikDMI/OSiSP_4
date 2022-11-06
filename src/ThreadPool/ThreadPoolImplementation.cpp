@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "ThreadPoolImplementation.h"
+#include "ThreadsMap.h"
 
 namespace LAB {
 
@@ -14,8 +15,9 @@ namespace LAB {
 			m_maxThreadNumber = MIN_THREAD_NUMBER;
 		}
 		//Initialize minimal number of threads
+		m_threadsMap = new ThreadsMap(m_maxThreadNumber, MIN_THREAD_NUMBER);
 		for (int i = 0; i < MIN_THREAD_NUMBER; ++i) {
-			m_poolThreads.push_back(new ThreadInfo());
+			m_poolThreads[i] = new ThreadInfo(m_threadsMap, i);
 		}
 	}
 
@@ -24,5 +26,6 @@ namespace LAB {
 		for (auto thread : m_poolThreads) {
 			delete thread;
 		}
+		delete m_threadsMap;
 	}
 }

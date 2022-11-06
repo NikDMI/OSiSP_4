@@ -5,7 +5,7 @@
 
 namespace LAB {
 	
-
+	class ThreadsMap;
 	/*
 	* This class represents logical info about thread for thread pool
 	*/
@@ -16,7 +16,7 @@ namespace LAB {
 			void* params;
 		};
 	private:
-		ThreadInfo();
+		ThreadInfo(ThreadsMap* threadMap, int indexInMap);
 		~ThreadInfo();
 
 		bool TrySetWorkItem(ThreadPool::WorkCallback, void* params);
@@ -28,6 +28,8 @@ namespace LAB {
 		HANDLE m_threadHandle;
 		WorkItemData m_itemData;
 		LONG m_isThreadBusy;
+		ThreadsMap* m_sharedThreadsMap;
+		int m_indexInThreadsMap;
 
 		
 		friend DWORD WINAPI ThreadProc(LPVOID param);
