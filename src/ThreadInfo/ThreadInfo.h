@@ -17,11 +17,12 @@ namespace LAB {
 		//	ThreadPool::WorkCallback callback;
 		//	void* params;
 		//};
+		bool TrySetWorkItem(WorkCallback, void* params);
+
 	private:
-		ThreadInfo(ThreadsMap* threadMap, int indexInMap, TaskQueue*& outLocalTaskQueue);
+		ThreadInfo(ThreadsMap* threadMap, int indexInMap, TaskQueue*& outLocalTaskQueue, int taskQueueCapacity = 1);
 		~ThreadInfo();
 
-		bool TrySetWorkItem(WorkCallback, void* params);
 
 
 		enum class ThreadEvent {GET_TASK, TERMINATE};

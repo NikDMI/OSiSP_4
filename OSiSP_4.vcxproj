@@ -22,6 +22,7 @@
     <ClCompile Include="src\Main.cpp" />
     <ClCompile Include="src\TaskInfo\TaskInfo.cpp" />
     <ClCompile Include="src\ThreadInfo\ThreadInfo.cpp" />
+    <ClCompile Include="src\ThreadManager\DynamicThreadManager.cpp" />
     <ClCompile Include="src\ThreadManager\IThreadManager.cpp" />
     <ClCompile Include="src\ThreadPool\TaskQueue.cpp" />
     <ClCompile Include="src\ThreadPool\ThreadPool.cpp" />
@@ -32,6 +33,7 @@
     <ClInclude Include="src\Config.h" />
     <ClInclude Include="src\TaskInfo\TaskInfo.h" />
     <ClInclude Include="src\ThreadInfo\ThreadInfo.h" />
+    <ClInclude Include="src\ThreadManager\DynamicThreadManager.h" />
     <ClInclude Include="src\ThreadManager\IThreadManager.h" />
     <ClInclude Include="src\ThreadPool\TaskQueue.h" />
     <ClInclude Include="src\ThreadPool\ThreadPool.h" />

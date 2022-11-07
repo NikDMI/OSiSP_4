@@ -9,5 +9,6 @@ namespace LAB {
 	public:
 		WorkCallback callbackFunction;
 		void* params;
+		void PerformSynchronicTask();
 	};
 }

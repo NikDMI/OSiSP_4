@@ -2,6 +2,7 @@
 #include "ThreadPool.h"
 #include "../ThreadInfo/ThreadInfo.h"
 #include "../TaskInfo/TaskInfo.h"
+#include "../ThreadManager/DynamicThreadManager.h"
 #include <vector>
 
 namespace LAB {
@@ -19,7 +20,7 @@ namespace LAB {
 		* Get resourses for minThreadNumber threads
 		* if minThreadNumber == 0 -> get max available threads
 		*/
-		void SetMinimalActiveThreadsNumber(int minThreadNumber = 0) noexcept;
+		//void SetMinimalActiveThreadsNumber(int minThreadNumber = 0) noexcept;
 
 		const static int MAX_THREAD_NUMBER = 30;
 		const static int MIN_THREAD_NUMBER = 4;
@@ -28,10 +29,9 @@ namespace LAB {
 		ThreadPoolImplementation();
 		~ThreadPoolImplementation();
 
-		//Section of threads information
+		
 		int m_maxThreadNumber;
-		std::vector<ThreadInfo*> m_poolThreads { MAX_THREAD_NUMBER };		//Threads of OS, that ThreadPool was created
-		ThreadsMap* m_threadsMap;
+		DynamicThreadManager* m_dynamicThreadManager;
 
 		friend class ThreadPool;
 	};

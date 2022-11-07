@@ -69,6 +69,9 @@
     <ClCompile Include="src\TaskInfo\TaskInfo.cpp">
       <Filter>Исходные файлы\src\TaskInfo</Filter>
     </ClCompile>
+    <ClCompile Include="src\ThreadManager\DynamicThreadManager.cpp">
+      <Filter>Исходные файлы\src\ThreadManager</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ThreadPool\ThreadPool.h">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="src\TaskInfo\TaskInfo.h">
       <Filter>Файлы заголовков\src\TaskInfo</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ThreadManager\DynamicThreadManager.h">
+      <Filter>Файлы заголовков\src\ThreadManager</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

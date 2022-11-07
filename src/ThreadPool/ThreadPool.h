@@ -20,6 +20,7 @@ namespace LAB {
 	private:
 		ThreadPool(int);	//Init constructor
 
+		static CRITICAL_SECTION m_lockObject;
 		static ThreadPoolImplementation* m_threadPool;
 		bool m_isThreadOwner = false;
 		friend class ConfigThreadPool;

@@ -14,18 +14,21 @@ namespace LAB {
 		else if (m_maxThreadNumber < MIN_THREAD_NUMBER) {
 			m_maxThreadNumber = MIN_THREAD_NUMBER;
 		}
-		//Initialize minimal number of threads
-		m_threadsMap = new ThreadsMap(m_maxThreadNumber, MIN_THREAD_NUMBER);
-		//for (int i = 0; i < MIN_THREAD_NUMBER; ++i) {
-		//	m_poolThreads[i] = new ThreadInfo(m_threadsMap, i);
-		//}
+		//Init thread managers
+		m_dynamicThreadManager = new DynamicThreadManager(m_maxThreadNumber, MIN_THREAD_NUMBER, 2);
 	}
 
 
 	ThreadPoolImplementation::~ThreadPoolImplementation() {
-		//for (auto thread : m_poolThreads) {
-		//	delete thread;
-		//}
-		delete m_threadsMap;
+		delete m_dynamicThreadManager;
+	}
+
+
+	void ThreadPoolImplementation::QueueUserWorkItem(WorkCallback callback, void* params, ThreadPool::ThreadPoolFlags threadFlags) {
+		switch (threadFlags) {
+		case ThreadPool::ThreadPoolFlags::NORMAL_THREAD:
+			m_dynamicThreadManager->QueueUserWorkItem(callback, params);
+			break;
+		}
 	}
 }
