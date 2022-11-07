@@ -1,5 +1,6 @@
 #include <Windows.h>
 #include "ThreadPool/ThreadPool.h"
+#include "FileParser/FileParser.h"
 #include <fstream>
 
 using namespace LAB;
@@ -21,14 +22,17 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE, LPSTR lpCmdLine, int nCmdShow
 	ostream->open(L"FileOut.txt", ios_base::out | ios_base::trunc);
 	waitEvent = CreateEvent(NULL, TRUE, FALSE, NULL);
 	waitOs = CreateEvent(NULL, FALSE, TRUE, NULL);
+	/*
 	threadPool->QueueUserWorkItem(callbackFunction2, ostream, ThreadPool::NORMAL_THREAD);
-	for (int i = 0; i < 300; i++) {
+	for (int i = 0; i < 500; i++) {
 		Data* d = new Data{ ostream, i };
 		threadPool->QueueUserWorkItem(callbackFunction1, d, ThreadPool::NORMAL_THREAD);
 	}
 	WaitForSingleObject(waitEvent, INFINITE);
 	(*ostream) << "TOTAL " << n;
-	delete threadPool;
+	*/
+	//delete threadPool;
+	SortTextFile(L"Test.txt", L"Out.txt");
 	return 0;
 }
 

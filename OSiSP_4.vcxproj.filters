@@ -43,6 +43,12 @@
     <Filter Include="Исходные файлы\src\TaskInfo">
       <UniqueIdentifier>{11628284-71ba-4636-82be-1ec54311d74e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\src\FileParser">
+      <UniqueIdentifier>{fb35ba04-54bd-4110-aa5e-33ed07fad406}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\src\FileParser">
+      <UniqueIdentifier>{b6e2f83b-fd7e-4c3b-84d1-1b444b03450e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -72,6 +78,9 @@
     <ClCompile Include="src\ThreadManager\DynamicThreadManager.cpp">
       <Filter>Исходные файлы\src\ThreadManager</Filter>
     </ClCompile>
+    <ClCompile Include="src\FileParser\FileParser.cpp">
+      <Filter>Исходные файлы\src\FileParser</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ThreadPool\ThreadPool.h">
@@ -100,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="src\ThreadManager\DynamicThreadManager.h">
       <Filter>Файлы заголовков\src\ThreadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\FileParser\FileParser.h">
+      <Filter>Файлы заголовков\src\FileParser</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
