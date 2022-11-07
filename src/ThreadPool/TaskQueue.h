@@ -2,23 +2,22 @@
 #include <Windows.h>
 #include <queue>
 #include "ThreadPool.h"
+#include "../TaskInfo/TaskInfo.h"
 
 namespace LAB {
 
 	class TaskQueue {
 	public:
-		struct TaskInfo {
-			ThreadPool::WorkCallback callbackFunction;
-			void* params;
-		};
+		static const UINT MAX_TASKS_IN_QUEUE = MAXUINT32;
 
-		TaskQueue();
+		TaskQueue(UINT maxQueueCapacity = MAX_TASKS_IN_QUEUE);
 		~TaskQueue();
 
-		void PushTask(TaskInfo task);
-		bool PopTask(TaskInfo& task);
+		bool TryPushTask(const TaskInfo& task);
+		bool TryPopTask(TaskInfo& task);
 	private:
 		CRITICAL_SECTION m_lockObject;
-		std::queue<TaskInfo> m_tasks;
+		UINT m_queueCapacity;
+		std::queue<TaskInfo> m_tasksQueue;
 	};
 }

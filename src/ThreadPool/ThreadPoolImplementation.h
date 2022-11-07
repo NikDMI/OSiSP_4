@@ -1,6 +1,7 @@
 #pragma once
 #include "ThreadPool.h"
 #include "../ThreadInfo/ThreadInfo.h"
+#include "../TaskInfo/TaskInfo.h"
 #include <vector>
 
 namespace LAB {
@@ -13,7 +14,7 @@ namespace LAB {
 	*/
 	class ThreadPoolImplementation {
 	public:
-		void QueueUserWorkItem(ThreadPool::WorkCallback callback, void* params, ThreadPool::ThreadPoolFlags threadFlags);
+		void QueueUserWorkItem(WorkCallback callback, void* params, ThreadPool::ThreadPoolFlags threadFlags);
 		/*
 		* Get resourses for minThreadNumber threads
 		* if minThreadNumber == 0 -> get max available threads

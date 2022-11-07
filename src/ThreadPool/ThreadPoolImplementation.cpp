@@ -16,16 +16,16 @@ namespace LAB {
 		}
 		//Initialize minimal number of threads
 		m_threadsMap = new ThreadsMap(m_maxThreadNumber, MIN_THREAD_NUMBER);
-		for (int i = 0; i < MIN_THREAD_NUMBER; ++i) {
-			m_poolThreads[i] = new ThreadInfo(m_threadsMap, i);
-		}
+		//for (int i = 0; i < MIN_THREAD_NUMBER; ++i) {
+		//	m_poolThreads[i] = new ThreadInfo(m_threadsMap, i);
+		//}
 	}
 
 
 	ThreadPoolImplementation::~ThreadPoolImplementation() {
-		for (auto thread : m_poolThreads) {
-			delete thread;
-		}
+		//for (auto thread : m_poolThreads) {
+		//	delete thread;
+		//}
 		delete m_threadsMap;
 	}
 }

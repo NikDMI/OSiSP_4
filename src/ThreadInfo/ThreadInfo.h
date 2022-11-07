@@ -2,6 +2,8 @@
 #include <Windows.h>
 #include "../Config.h"
 #include "../ThreadPool/ThreadPool.h"
+#include "../ThreadPool/TaskQueue.h"
+#include "../TaskInfo/TaskInfo.h"
 
 namespace LAB {
 	
@@ -11,29 +13,34 @@ namespace LAB {
 	*/
 	class ThreadInfo {
 	public:
-		struct WorkItemData {
-			ThreadPool::WorkCallback callback;
-			void* params;
-		};
+		//struct WorkItemData {
+		//	ThreadPool::WorkCallback callback;
+		//	void* params;
+		//};
 	private:
-		ThreadInfo(ThreadsMap* threadMap, int indexInMap);
+		ThreadInfo(ThreadsMap* threadMap, int indexInMap, TaskQueue*& outLocalTaskQueue);
 		~ThreadInfo();
 
-		bool TrySetWorkItem(ThreadPool::WorkCallback, void* params);
+		bool TrySetWorkItem(WorkCallback, void* params);
 
 
 		enum class ThreadEvent {GET_TASK, TERMINATE};
 		ThreadEvent m_currentThreadEvent;
+
 		HANDLE m_threadEvent;
 		HANDLE m_threadHandle;
-		WorkItemData m_itemData;
 		LONG m_isThreadBusy;
+
+		//WorkItemData m_itemData;
+
 		ThreadsMap* m_sharedThreadsMap;
 		int m_indexInThreadsMap;
 
+		TaskQueue* m_taskQueue;
+
 		
 		friend DWORD WINAPI ThreadProc(LPVOID param);
-		friend class ThreadPoolImplementation;
+		friend class IThreadManager;
 	};
 	
 }

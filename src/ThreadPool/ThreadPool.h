@@ -1,6 +1,7 @@
 #pragma once
 #include <Windows.h>
 #include "../Config.h"
+#include "../TaskInfo/TaskInfo.h"
 
 namespace LAB {
 
@@ -10,7 +11,6 @@ namespace LAB {
 	*/
 	class ThreadPool {
 	public:
-		using WorkCallback = void (*)(void* params);
 		enum ThreadPoolFlags {NORMAL_THREAD, IO_THREAD};
 
 		ThreadPool();

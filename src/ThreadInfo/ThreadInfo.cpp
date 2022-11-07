@@ -1,25 +1,33 @@
 #include "ThreadInfo.h"
 #include "../ThreadPool/ThreadsMap.h"
+#include "../ThreadPool/TaskQueue.h"
+#include "../TaskInfo/TaskInfo.h"
 
 namespace LAB {
 
 	DWORD WINAPI ThreadProc(LPVOID param);
 
-	ThreadInfo::ThreadInfo(ThreadsMap* threadMap, int indexInMap) : m_sharedThreadsMap{ threadMap }, m_indexInThreadsMap{ indexInMap } {
+	ThreadInfo::ThreadInfo(ThreadsMap* threadMap, int indexInMap, TaskQueue*& outLocalTaskQueue) : m_sharedThreadsMap{ threadMap },
+		m_indexInThreadsMap{ indexInMap }
+	{
 		if (threadMap == nullptr) throw ExceptionBadArgs();
 		//Auto reset event
 		m_threadEvent = CreateEvent(NULL, FALSE, FALSE, NULL);
+		//Local tasks queue
+		m_taskQueue = new TaskQueue();
+		outLocalTaskQueue = m_taskQueue;
+		//OS thread
 		m_isThreadBusy = 0;
 		m_threadHandle = CreateThread(NULL, 0, ThreadProc, this, 0, NULL);
 	}
 
 
-	bool ThreadInfo::TrySetWorkItem(ThreadPool::WorkCallback callbackFunction, void* params) {
+	bool ThreadInfo::TrySetWorkItem(WorkCallback callbackFunction, void* params) {
 		if (!InterlockedCompareExchange(&m_isThreadBusy, 1, 0)) {
 			m_sharedThreadsMap->SetThreadState(m_indexInThreadsMap, false);
 			m_currentThreadEvent = ThreadInfo::ThreadEvent::GET_TASK;
-			m_itemData.callback = callbackFunction;
-			m_itemData.params = params;
+			//m_itemData.callback = callbackFunction;
+			//m_itemData.params = params;
 			SetEvent(m_threadEvent);
 			return true;
 		}
@@ -35,6 +43,7 @@ namespace LAB {
 		WaitForSingleObject(m_threadHandle, INFINITE);
 		CloseHandle(m_threadEvent);
 		CloseHandle(m_threadHandle);
+		delete m_taskQueue;
 	}
 
 
@@ -44,12 +53,12 @@ namespace LAB {
 		while (true) {
 			threadInfo->m_sharedThreadsMap->SetThreadState(threadInfo->m_indexInThreadsMap, true);
 			WaitForSingleObject(waitEvent, INFINITE);
-			ThreadPool::WorkCallback callbackFunction;
+			//ThreadPool::WorkCallback callbackFunction;
 			//Choose thread activity
 			switch (threadInfo->m_currentThreadEvent) {
 			case ThreadInfo::ThreadEvent::GET_TASK:
-				callbackFunction = threadInfo->m_itemData.callback;
-				callbackFunction(threadInfo->m_itemData.params);
+				//callbackFunction = threadInfo->m_itemData.callback;
+				//callbackFunction(threadInfo->m_itemData.params);
 				InterlockedExchange(&threadInfo->m_isThreadBusy, 0);
 				break;
 

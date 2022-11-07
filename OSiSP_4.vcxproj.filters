@@ -31,6 +31,18 @@
     <Filter Include="Исходные файлы\src\ThreadInfo">
       <UniqueIdentifier>{5ff1b17e-1766-4be1-80a8-5fca493743c4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Файлы заголовков\src\ThreadManager">
+      <UniqueIdentifier>{e192debf-54f6-40fb-8046-fcd08e519e78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\src\ThreadManager">
+      <UniqueIdentifier>{e679864f-7788-41d8-8f39-03df69e79076}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Файлы заголовков\src\TaskInfo">
+      <UniqueIdentifier>{f7c189ca-8ddd-483f-abea-5a60ae3f9bd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\src\TaskInfo">
+      <UniqueIdentifier>{11628284-71ba-4636-82be-1ec54311d74e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="src\Main.cpp">
@@ -51,6 +63,12 @@
     <ClCompile Include="src\ThreadPool\TaskQueue.cpp">
       <Filter>Исходные файлы\src\ThreadPool</Filter>
     </ClCompile>
+    <ClCompile Include="src\ThreadManager\IThreadManager.cpp">
+      <Filter>Исходные файлы\src\ThreadManager</Filter>
+    </ClCompile>
+    <ClCompile Include="src\TaskInfo\TaskInfo.cpp">
+      <Filter>Исходные файлы\src\TaskInfo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\ThreadPool\ThreadPool.h">
@@ -70,6 +88,12 @@
     </ClInclude>
     <ClInclude Include="src\ThreadPool\TaskQueue.h">
       <Filter>Файлы заголовков\src\ThreadPool</Filter>
+    </ClInclude>
+    <ClInclude Include="src\ThreadManager\IThreadManager.h">
+      <Filter>Файлы заголовков\src\ThreadManager</Filter>
+    </ClInclude>
+    <ClInclude Include="src\TaskInfo\TaskInfo.h">
+      <Filter>Файлы заголовков\src\TaskInfo</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
